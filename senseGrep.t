@@ -40,41 +40,41 @@ touchGrep(fn, actor?) { return(senseGrep(touch, fn, actor)); }
 // These take a search term as an argument and return an anonymous function
 // that can be passed as an argument to senseInfoTableSubset().  Example:
 //
-// 	local fn = filterNoun('foozle');
+// 	local fn = nounFilter('foozle');
 //
 // This creates a function and assigns it to fn.  The function fn() takes
 // two arguments:  an object and a sense info table.  fn(obj, info) will
 // return true if the object obj's noun list contains "foozle".  That is,
 // if >X FOOZLE (for example) would work for the object.
 //
-// filterAdjective() works similarly, only it searches adjectives on the
+// adjectiveFilter() works similarly, only it searches adjectives on the
 // object instead of nouns.
 //
-// filterWord() combines filterNoun() and filterAdjective(), returning
+// wordFilter() combines nounFilter() and adjectiveFilter(), returning
 // the objects that match either.
 //
 // In the example above we assign the function returned by these filters to
 // a variable, but they're really designed to be used as anonymous arguments
 // to the senseGrep() functions.  Something like:
 //
-// 	local l = sightGrep(filterNoun('foozle'));
+// 	local l = sightGrep(nounFilter('foozle'));
 //
 // ...will result in l containing a list of all the visible objects that
 // match "foozle" as a noun, and...
 //
-//	sightGrep(filterAdjective('red')).forEach(function(o) {
+//	sightGrep(adjectiveFilter('red')).forEach(function(o) {
 //		// stuff goes here
 //	});
 //
 // ...would loop through all of the visible objects that the adjective "red"
 // applies to.
 //
-filterWord(txt)
+wordFilter(txt)
 	{ return({ x, info: !txt || ((x.noun && x.noun.indexOf(txt) != nil)
 		|| (x.adjective && x.adjective.indexOf(txt) != nil)) }); }
-filterNoun(txt)
+nounFilter(txt)
 	{ return({ x, info: !txt || (x.noun && x.noun.indexOf(txt) != nil) }); }
-filterAdjective(txt)
+adjectiveFilter(txt)
 	{ return({ x, info: !txt
 		|| (x.adjective && x.adjective.indexOf(txt) != nil) }); }
 
