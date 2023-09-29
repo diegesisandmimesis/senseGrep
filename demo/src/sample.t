@@ -40,7 +40,4 @@ versionInfo: GameID
 	}
 ;
 
-startRoom: Room 'Void' "This is a featureless void.";
-+me: Person;
-
 gameMain: GameMainDef initialPlayerChar = me;

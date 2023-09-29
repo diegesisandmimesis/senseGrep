@@ -29,6 +29,40 @@ senseGrep(sense, fn, actor?) {
 		.senseInfoTable(sense), fn));
 }
 
+senseGrepFancy(sense?, matchList?, excludeList?, actor?) {
+	if(sense == nil) sense = sight;
+	if(matchList && !matchList.ofKind(List))
+		matchList = [ matchList ];
+	if(excludeList && !excludeList.ofKind(List))
+		excludeList = [ excludeList ];
+
+	return(senseGrep(sense, function(o, s) {
+		local i, r;
+
+		if(matchList) {
+			r = nil;
+			for(i = 1; i <= matchList.length; i++) {
+				if(o.ofKind(matchList[i])
+					|| (o == matchList[i]))
+					r = true;
+			}
+			if(r == nil)
+				return(nil);
+		}
+
+		if(excludeList) {
+			for(i = 1; i <= excludeList.length; i++) {
+				if(excludeList[i] == o)
+					return(nil);
+				if(o.ofKind(excludeList[i]))
+					return(nil);
+			}
+		}
+
+		return(true);
+	}));
+}
+
 // Convenience wrappers for the adv3-defined senses
 sightGrep(fn, actor?) { return(senseGrep(sight, fn, actor)); }
 soundGrep(fn, actor?) { return(senseGrep(sound, fn, actor)); }
