@@ -71,7 +71,10 @@
 //
 //	// Returns all the objects visible by Bob, not counting himself
 //	// and any Fixture objects.
-//	local l = senseGrepFilter(sight, bob, nil, [ me, Fixture ]);
+//	local l = senseGrepFilter(sight, bob, nil, [ bob, Fixture ]);
+//
+//	// Returns all the Actors visible to the player, not counting themself.
+//	local l = senseGrepFilter(sight, me, Actor, me);
 //
 //	// Returns all the books visible to the player.
 //	local l = senseGrepFilter(sight, me, nounFilter('book'));
