@@ -85,6 +85,19 @@ DefineAction(Grep, _GrepSystemAction)
 	}
 ;
 VerbRule(Grep) 'grep' : GrepAction verbPhrase = 'grep/grepping';
+
+DefineAction(GrepLiteral, _GrepLiteralAction)
+	execAction() {
+		"\^<<grepCfg.sense.adj>> <q><<toString(getLiteral())>></q>
+			objects:  ";
+		_grepOutput(senseGrep(gSense, gActor,
+			wordFilter(getLiteral())));
+	}
+;
+VerbRule(GrepLiteral) 'grep' singleLiteral : GrepLiteralAction
+	verbPhrase = 'grep/grepping (what)'
+;
+
 DefineAction(Ngrep, _GrepLiteralAction)
 	execAction() {
 		"\^<<grepCfg.sense.adj>> <q><<toString(getLiteral())>></q>
