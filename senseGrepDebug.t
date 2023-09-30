@@ -8,11 +8,12 @@
 // USAGE:
 //
 //	>GREP
-//		Displays a list of all objects sensable via the current
+//		Displays a list of all objects detectable via the current
 //		grep sense.  Defaults to using sight.
 //
 //	>GREPSENSE [sense]
 //		Makes the given sense the current grep sense.
+//		Allowed senses are:  sight, sound, smell, touch.
 //
 //	>NGREP [noun]
 //		Using the current grep sense, list all objects whose
@@ -88,8 +89,8 @@ DefineAction(Ngrep, _GrepLiteralAction)
 	execAction() {
 		"\^<<grepCfg.sense.adj>> <q><<toString(getLiteral())>></q>
 			objects:  ";
-		_grepOutput(senseGrep(gSense, nounFilter(getLiteral()),
-			gActor));
+		_grepOutput(senseGrep(gSense, gActor,
+			nounFilter(getLiteral())));
 	}
 ;
 VerbRule(Ngrep) 'ngrep' singleLiteral : NgrepAction
@@ -100,8 +101,8 @@ DefineAction(Agrep, _GrepLiteralAction)
 	execAction() {
 		"\^<<grepCfg.sense.adj>> <q><<toString(getLiteral())>></q>
 			objects:  ";
-		_grepOutput(senseGrep(gSense, adjectiveFilter(getLiteral()),
-			gActor));
+		_grepOutput(senseGrep(gSense, gActor,
+			adjectiveFilter(getLiteral())));
 	}
 ;
 VerbRule(Agrep) 'agrep' singleLiteral : AgrepAction

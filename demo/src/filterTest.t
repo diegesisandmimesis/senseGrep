@@ -53,9 +53,15 @@ modify startRoom
 		_grepOutput(senseGrep(sight, nil, initialPlayerChar));
 
 		// Unfiltered senseGrep results.
+		"<.p> ";
 		"\nAll objects (empty filter):\n ";
 		_grepOutput(senseGrepFilter(sight, nil, nil,
 			initialPlayerChar));
+
+		// Call sightGrep() instead of senseGrep().
+		"<.p> ";
+		"\nAll objects (sightGrep):\n ";
+		_grepOutput(sightGrep(initialPlayerChar));
 
 		// Exclude all the Fixtures and me.
 		"<.p> ";

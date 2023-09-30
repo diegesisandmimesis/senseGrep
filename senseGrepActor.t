@@ -36,6 +36,6 @@ modify Actor
 		}
 
 		// Return the grep results.
-		return(senseGrepFilter(sense, cls, excludeList, self));
+		return(senseGrepFilter(sense, self, cls, excludeList));
 	}
 ;
