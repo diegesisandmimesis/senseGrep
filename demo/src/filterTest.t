@@ -49,8 +49,11 @@ modify startRoom
 			initial player character. ";
 		"<.p> ";
 
+		"\nAll objects (unfiltered):\n ";
+		_grepOutput(senseGrep(sight, nil, initialPlayerChar));
+
 		// Unfiltered senseGrep results.
-		"\nAll objects:\n ";
+		"\nAll objects (empty filter):\n ";
 		_grepOutput(senseGrepFilter(sight, nil, nil,
 			initialPlayerChar));
 

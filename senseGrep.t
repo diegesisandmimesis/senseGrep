@@ -2,6 +2,16 @@
 //
 // senseGrep.t
 //
+//	A TADS3 module providing utilities for working with sense tables.
+//
+//
+// USAGE
+//
+//	// Returns all the objects visible 
+//	senseGrep(sense, fn, actor?)
+//		Returns the objects 
+//		
+//
 #include <adv3.h>
 #include <en_us.h>
 
@@ -22,11 +32,12 @@ senseGrepModuleID: ModuleID {
 //		returning true-ish if the object should be listed and
 //		nil-ish if it shouldn't
 //	actor	actor whose POV will be used, or gActor if not specified
-senseGrep(sense, fn, actor?) {
+senseGrep(sense, fn?, actor?) {
 	if(actor == nil) actor = gActor;
 	if(!sense || !actor || !actor.ofKind(Actor)) return([]);
 	return(senseInfoTableSubset(getPOVDefault(actor ? actor : gActor)
-		.senseInfoTable(sense), fn));
+		.senseInfoTable(sense),
+		(fn ? fn : function(o, s) { return(true); })));
 }
 
 senseGrepFilter(sense?, matchList?, excludeList?, actor?) {
