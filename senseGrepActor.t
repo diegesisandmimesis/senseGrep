@@ -24,7 +24,6 @@ modify Actor
 		if(location == nil)
 			return([]);
 
-		
 		// We always exclude ourselves from the results.
 		if(excludeList == nil) {
 			excludeList = [ self ];
