@@ -72,12 +72,17 @@ modify startRoom
 		// List only the books.
 		"<.p> ";
 		"\nAll books:\n ";
-		_grepOutput(senseGrep(sight, me, nounFilter('book')));
+		_grepOutput(senseGrepNoun('book', sight, me));
 
 		// List only the red objects.
 		"<.p> ";
 		"\nAll red objects:\n ";
-		_grepOutput(senseGrep(sight, me, adjectiveFilter('red')));
+		_grepOutput(senseGrepAdjective('red', sight, me));
+
+		// Word filter
+		"<.p> ";
+		"\nAll red objects (via wordFilter()):\n ";
+		_grepOutput(senseGrepWord('red', sight, me));
 	}
 ;
 

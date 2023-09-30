@@ -148,11 +148,28 @@ senseGrepFilter(sense?, actor?, matchList?, excludeList?) {
 	}));
 }
 
+senseGrepWord(txt, sense?, actor?) {
+	return(senseGrep(sense, me, wordFilter(txt)));
+}
+
+senseGrepNoun(txt, sense?, actor?) {
+	return(senseGrep(sense, me, nounFilter(txt)));
+}
+
+senseGrepAdjective(txt, sense?, actor?) {
+	return(senseGrep(sense, me, adjectiveFilter(txt)));
+}
+
 // Convenience wrappers for the adv3-defined senses
 sightGrep(actor?, fn?) { return(senseGrep(sight, actor, fn)); }
 soundGrep(actor?, fn?) { return(senseGrep(sound, actor, fn)); }
 smellGrep(actor?, fn?) { return(senseGrep(smell, actor, fn)); }
 touchGrep(actor?, fn?) { return(senseGrep(touch, actor, fn)); }
+
+sightGrepFilter(a?, i?, e?) { return(senseGrepFilter(sight, a, i, e)); }
+soundGrepFilter(a?, i?, e?) { return(senseGrepFilter(sound, a, i, e)); }
+smellGrepFilter(a?, i?, e?) { return(senseGrepFilter(smell, a, i, e)); }
+touchGrepFilter(a?, i?, e?) { return(senseGrepFilter(touch, a, i, e)); }
 
 // Filter functions
 //
