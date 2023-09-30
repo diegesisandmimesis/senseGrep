@@ -29,7 +29,7 @@ senseGrep(sense, fn, actor?) {
 		.senseInfoTable(sense), fn));
 }
 
-senseGrepFancy(sense?, matchList?, excludeList?, actor?) {
+senseGrepFilter(sense?, matchList?, excludeList?, actor?) {
 	if(sense == nil) sense = sight;
 	if(matchList && !matchList.ofKind(List))
 		matchList = [ matchList ];

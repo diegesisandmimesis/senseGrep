@@ -19,11 +19,13 @@ modify Actor
 	//	excludeList	exclude these objects
 	//	sense		sense to use (default:  sight)
 	getVisibleObjects(cls?, excludeList?, sense?) {
-		// Gotta be somewhere first.
+		// We must be in a location to find other things in our
+		// location.
 		if(location == nil)
 			return([]);
 
 		
+		// We always exclude ourselves from the results.
 		if(excludeList == nil) {
 			excludeList = [ self ];
 		} else {
@@ -33,47 +35,7 @@ modify Actor
 				excludeList += self;
 		}
 
-/*
-		// Make sure we have a class.
-		if(cls == nil)
-			cls = Thing;
-
-		// If we have a non-nil, non-List excludeList, make it a List.
-		if((excludeList != nil) && !excludeList.ofKind(List))
-			excludeList = [ excludeList ];
-
-		// Make sure we have a sense.
-		if(sense == nil)
-			sense = sight;
-
-		r = senseGrep(sense, function(o, s) {
-			local i;
-
-			// Make sure we match the class.
-			if(!o.ofKind(cls) && (o != cls))
-				return(nil);
-
-			// Don't include ourselves.
-			if(o == self)
-				return(nil);
-
-			// If we have an exclude list, check it.
-			if(excludeList) {
-				for(i = 1; i <= excludeList.length; i++) {
-					if(excludeList[i] == o)
-						return(nil);
-					if(o.ofKind(excludeList[i]))
-						return(nil);
-				}
-			}
-
-			// Match.
-			return(true);
-		});
-
-		// Return the table subset.
-		return(r);
-*/
-		return(senseGrepFancy(sense, cls, excludeList, self));
+		// Return the grep results.
+		return(senseGrepFilter(sense, cls, excludeList, self));
 	}
 ;
