@@ -71,13 +71,13 @@
 //
 //	// Returns all the objects visible by Bob, not counting himself
 //	// and any Fixture objects.
-//	local l = senseGrepFilter(sight, nil, [ me, Fixture ], bob);
+//	local l = senseGrepFilter(sight, bob, nil, [ me, Fixture ]);
 //
 //	// Returns all the books visible to the player.
-//	local l = senseGrepFilter(sight, nounFilter('book'), me);
+//	local l = senseGrepFilter(sight, me, nounFilter('book'));
 //
 //	// Returns all the red objects visible to the player.
-//	local l = senseGrepFilter(sight, adjectiveFilter('red'), me);
+//	local l = senseGrepFilter(sight, me, adjectiveFilter('red'));
 //	
 //
 #include <adv3.h>

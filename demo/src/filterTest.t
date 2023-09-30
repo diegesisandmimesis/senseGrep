@@ -50,13 +50,13 @@ modify startRoom
 		"<.p> ";
 
 		"\nAll objects (unfiltered):\n ";
-		_grepOutput(senseGrep(sight, nil, initialPlayerChar));
+		_grepOutput(senseGrep(sight, initialPlayerChar));
 
 		// Unfiltered senseGrep results.
 		"<.p> ";
 		"\nAll objects (empty filter):\n ";
-		_grepOutput(senseGrepFilter(sight, nil, nil,
-			initialPlayerChar));
+		_grepOutput(senseGrepFilter(sight, initialPlayerChar,
+			nil, nil));
 
 		// Call sightGrep() instead of senseGrep().
 		"<.p> ";
@@ -66,18 +66,18 @@ modify startRoom
 		// Exclude all the Fixtures and me.
 		"<.p> ";
 		"\nAll non-Fixture objects, excluding the player:\n ";
-		_grepOutput(senseGrepFilter(sight, nil, [ me, Fixture ],
-			initialPlayerChar));
+		_grepOutput(senseGrepFilter(sight, initialPlayerChar,
+			nil, [ me, Fixture ]));
 
 		// List only the books.
 		"<.p> ";
 		"\nAll books:\n ";
-		_grepOutput(senseGrep(sight, nounFilter('book'), me));
+		_grepOutput(senseGrep(sight, me, nounFilter('book')));
 
 		// List only the red objects.
 		"<.p> ";
 		"\nAll red objects:\n ";
-		_grepOutput(senseGrep(sight, adjectiveFilter('red'), me));
+		_grepOutput(senseGrep(sight, me, adjectiveFilter('red')));
 	}
 ;
 
