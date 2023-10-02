@@ -37,4 +37,10 @@ modify Actor
 		// Return the grep results.
 		return(senseGrepFilter(sense, self, cls, excludeList));
 	}
+
+	// Convenience wrapper around getVisibleObjects() to only return
+	// actors.
+	getVisibleActors(excludeList?, sense?) {
+		return(getVisibleObjects(Actor, excludeList, sense));
+	}
 ;
