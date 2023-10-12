@@ -149,15 +149,15 @@ senseGrepFilter(sense?, actor?, matchList?, excludeList?) {
 }
 
 senseGrepWord(txt, sense?, actor?) {
-	return(senseGrep(sense, me, wordFilter(txt)));
+	return(senseGrep(sense, actor, wordFilter(txt)));
 }
 
 senseGrepNoun(txt, sense?, actor?) {
-	return(senseGrep(sense, me, nounFilter(txt)));
+	return(senseGrep(sense, actor, nounFilter(txt)));
 }
 
 senseGrepAdjective(txt, sense?, actor?) {
-	return(senseGrep(sense, me, adjectiveFilter(txt)));
+	return(senseGrep(sense, actor, adjectiveFilter(txt)));
 }
 
 // Convenience wrappers for the adv3-defined senses
